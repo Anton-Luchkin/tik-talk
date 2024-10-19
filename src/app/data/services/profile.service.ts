@@ -5,35 +5,35 @@ import { Pageble } from '../interfaces/pageble.interface';
 import { map, tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class ProfileService {
-  http = inject(HttpClient);
-  baseApiUrl = 'https://icherniakov.ru/yt-course/';
+	http = inject(HttpClient);
+	baseApiUrl = 'https://icherniakov.ru/yt-course/';
 
-  me = signal<Profile | null>(null)
+	me = signal<Profile | null>(null)
 
-  getTestAccounts() {
-    return this.http.get<Profile[]>(`${this.baseApiUrl}account/test_accounts`);
-  }
+	getTestAccounts() {
+		return this.http.get<Profile[]>(`${this.baseApiUrl}account/test_accounts`);
+	}
 
-  getMe() {
-    return this.http.get<Profile>(`${this.baseApiUrl}account/me`).pipe(
-      tap(res => this.me.set(res))
-    )
-  }
+	getMe() {
+		return this.http.get<Profile>(`${this.baseApiUrl}account/me`).pipe(
+			tap(res => this.me.set(res))
+		)
+	}
 
-  getAccount(id: string) {
-    return this.http.get<Profile>(`${this.baseApiUrl}account/${id}`);
-  }
+	getAccount(id: string) {
+		return this.http.get<Profile>(`${this.baseApiUrl}account/${id}`);
+	}
 
-  getSubscribersShortList() {
-    return this.http
-      .get<Pageble<Profile>>(`${this.baseApiUrl}account/subscribers/`)
-      .pipe(map((res) => res.items.slice(0, 3)));
-  }
+	getSubscribersShortList() {
+		return this.http
+			.get<Pageble<Profile>>(`${this.baseApiUrl}account/subscribers/`)
+			.pipe(map((res) => res.items.slice(0, 3)));
+	}
 
-  patchProfile(profile: Partial<Profile>) {
-    return this.http.patch<Profile>(`${this.baseApiUrl}account/me`, profile);
-  }
+	patchProfile(profile: Partial<Profile>) {
+		return this.http.patch<Profile>(`${this.baseApiUrl}account/me`, profile);
+	}
 }
