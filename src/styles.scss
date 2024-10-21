@@ -7,6 +7,7 @@
   --primary-color: #AE7AFF;
   --gray-color: #5F646D;
   --dark-hover-color: #161616;
+  --light-transparent-color: rgba(255, 255, 255, 0.75)
 }
 
 *,
@@ -76,8 +77,8 @@ body {
   font-weight: 800;
 }
 
-.h4{
-	font-size: 24px;
+.h4 {
+  font-size: 24px;
   line-height: 32px;
   font-weight: 800;
 }
@@ -128,4 +129,39 @@ body {
   line-height: 21px;
   font-family: "JetBrains Mono", sans-serif;
   color: var(--light-color);
+}
+
+.tt-form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tt-form-label__text {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--light-transparent-color);
+}
+
+.tt-form-input {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--light-color);
+  color: var(--light-color);
+  height: 33px;
+
+  &:focus-visible {
+    outline: 1px solid var(--primary-color);
+  }
+}
+
+.tt-textarea {
+  height: 84px;
+  resize: none ;
 }

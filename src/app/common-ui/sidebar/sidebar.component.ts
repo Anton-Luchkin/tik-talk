@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { SvgComponent } from '../svg/svg.component';
 import { AsyncPipe, JsonPipe, NgFor } from '@angular/common';
 import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ProfileService } from '../../data/services/profile.service';
 import { firstValueFrom } from 'rxjs';
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
@@ -10,7 +10,7 @@ import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [SvgComponent, NgFor, SubscriberCardComponent, RouterLink, AsyncPipe, JsonPipe, ImgUrlPipe],
+  imports: [SvgComponent, NgFor, SubscriberCardComponent, RouterLink, AsyncPipe, JsonPipe, ImgUrlPipe, RouterLinkActive],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
@@ -26,7 +26,7 @@ export class SidebarComponent {
     {
       label: 'Моя страница',
       icon: 'home',
-      link: '',
+      link: 'profile/me',
     },
     {
       label: 'Чаты',
